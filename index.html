@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💙 Boyfriend Day Special - A Love Letter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Bar (Always Visible at Top) -->
+        <div class="nav" id="nav">
+            <button class="nav-btn active" data-section="heart-section" onclick="showSection('heart-section', this)">💛 Heart</button>
+            <button class="nav-btn" data-section="love-counter" onclick="showSection('love-counter', this)">⏳ Counter</button>
+            <button class="nav-btn" data-section="gallery" onclick="showSection('gallery', this)">📸 Memories</button>
+            <button class="nav-btn" data-section="letter" onclick="showSection('letter', this)">💌 Letter</button>
+            <button class="nav-btn" data-section="promise" onclick="showSection('promise', this)">🤝 Promises</button>
+        </div>
+
+        <!-- Section 1: Heart Opening (ACTIVE ON START) -->
+        <div class="section active" id="heart-section" style="display: block;">
+            <div class="heart-section">
+                <h1 style="color: #ffd700; font-size: 28px; margin-bottom: 10px;">✨ Our Love Story ✨</h1>
+                <p style="color: #d4af37; font-size: 15px; margin-bottom: 20px;">Click the heart to open our special pages 💛</p>
+
+                <div class="heart-container" onclick="openHeart()" title="Click the heart to open next page!">
+                    <div class="heart" id="mainHeart">
+                        <svg viewBox="0 0 100 90">
+                            <defs>
+                                <linearGradient id="goldHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#fff5b8" />
+                                    <stop offset="30%" stop-color="#ffd700" />
+                                    <stop offset="70%" stop-color="#d4af37" />
+                                    <stop offset="100%" stop-color="#8a6713" />
+                                </linearGradient>
+                            </defs>
+                            <path
+                                d="M 50 85 C 20 55 0 35 0 20 A 20 20 0 0 1 50 20 A 20 20 0 0 1 100 20 C 100 35 80 55 50 85 Z"
+                                fill="url(#goldHeartGrad)" stroke="#fff8dc" stroke-width="1.5" />
+                        </svg>
+                        <div class="heart-text">💛</div>
+                    </div>
+                </div>
+
+                <p class="instruction" id="heartInstruction" onclick="openHeart()">Click the Heart to Explore Our Love Story! 💛</p>
+                <button class="main-btn" id="openHeartBtn" onclick="openHeart()">Explore Love Story 💛</button>
+
+                <div class="page-nav-footer">
+                    <div></div>
+                    <button class="page-btn" onclick="openHeart()">Next: Love Counter ⏳ ➡️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Love Counter -->
+        <div class="section" id="love-counter" style="display: none;">
+            <div class="counter-section">
+                <div class="counter-title">✨ Our Love Counter ✨</div>
+                <div class="counter-display" id="counter">365</div>
+                <div class="counter-label">Days we've loved each other</div>
+                
+                <div style="max-width: 300px; margin: 0 auto 20px;">
+                    <label style="display: block; color: #d4af37; margin-bottom: 8px; font-size: 13px;">Edit Days Together:</label>
+                    <input type="number" id="startDate" placeholder="Days together" value="365"
+                        style="color: #ffd700; background: rgba(0,0,0,0.5); border: 1px solid #d4af37; padding: 10px; border-radius: 8px; width: 100%; text-align: center; font-size: 16px;">
+                </div>
+
+                <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                    <button class="counter-btn" onclick="setCounter()">Update Counter</button>
+                    <button class="counter-btn" onclick="incrementCounter()">+1 Day Loved 💛</button>
+                </div>
+
+                <div class="page-nav-footer">
+                    <button class="page-btn" onclick="showSection('heart-section')">⬅️ Heart</button>
+                    <button class="page-btn" onclick="showSection('gallery')">Next: Memories 📸 ➡️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Photo Memories Gallery -->
+        <div class="section" id="gallery" style="display: none;">
+            <div class="gallery-section">
+                <div class="gallery-title">📸 Our Special Memory 📸</div>
+                
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Dedicated handsome memory polaroid renders here -->
+                </div>
+
+                <div class="page-nav-footer">
+                    <button class="page-btn" onclick="showSection('love-counter')">⬅️ Counter</button>
+                    <button class="page-btn" onclick="showSection('letter')">Next: Letter 💌 ➡️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Love Letter -->
+        <div class="section" id="letter" style="display: none;">
+            <div class="letter-section">
+                <div class="letter-seal">💌</div>
+                <div class="letter-title">A Letter for You</div>
+                
+                <textarea class="letter-input" id="letterText" placeholder="Write your own love message here..."></textarea>
+                
+                <button class="main-btn" onclick="saveLetter()">Save Letter 📜</button>
+
+                <div class="page-nav-footer">
+                    <button class="page-btn" onclick="showSection('gallery')">⬅️ Memories</button>
+                    <button class="page-btn" onclick="showSection('promise')">Next: Promises 🤝 ➡️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Promises Ceremony -->
+        <div class="section" id="promise" style="display: none;">
+            <div class="promise-section">
+                <div class="promise-title">🤝 Our Promises 🤝</div>
+                
+                <div class="promises-list" id="promisesList">
+                    <!-- Promises render dynamically -->
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                    <input type="text" class="promise-input" placeholder="Write your promise here..." id="promiseInput"
+                        onkeydown="if(event.key==='Enter') addPromise()" style="flex: 1; margin: 0;">
+                    <button class="main-btn" onclick="addPromise()"
+                        style="margin-top: 0; width: auto; padding: 12px 25px; white-space: nowrap;">Add Promise 💛</button>
+                </div>
+
+                <div class="page-nav-footer">
+                    <button class="page-btn" onclick="showSection('letter')">⬅️ Letter</button>
+                    <button class="page-btn" onclick="showSection('heart-section')">Replay Love Story 💛 🔄</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Photo Viewer Modal -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close-btn" onclick="closeLightbox()" title="Close viewer">✕</button>
+            <img src="" id="lightboxImg" class="lightbox-img" onclick="closeLightbox()" alt="Full view photo"
+                title="Click to dismiss">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+            <div class="lightbox-hint">💡 Tap image or anywhere outside to close</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
